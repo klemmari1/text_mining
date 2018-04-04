@@ -32,7 +32,7 @@ def customNER(tagged):
             ret.append(" ".join(e[0] for e in entity))
     return ret
 
-def wikiNER(tagged):
+def wikiClassification(tagged):
     entity = []
     ret = []
     for tagged_entry in tagged:
@@ -133,7 +133,7 @@ def main():
         else:
             wikitokens = nltk.word_tokenize(summary)
             wikitagged = nltk.pos_tag(wikitokens)
-            wikiclass = wikiNER(wikitagged)
+            wikiclass = wikiClassification(wikitagged)
             if wikiclass:
                 wikiclass = wikiclass[0]
             else:
@@ -158,7 +158,7 @@ def main():
         else:
             wikitokens = nltk.word_tokenize(summary)
             wikitagged = nltk.pos_tag(wikitokens)
-            wikiclass = wikiNER(wikitagged)
+            wikiclass = wikiClassification(wikitagged)
             if wikiclass:
                 wikiclass = wikiclass[0]
             else:
