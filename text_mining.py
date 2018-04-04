@@ -55,7 +55,7 @@ def loadText():
     data = json.load(open('./bbccrawler/bbccrawler/data.json'))
     return "\n".join(x["story"] for x in data)
 
-def wiki(input):
+def getWikiSummary(input):
     results = wikipedia.search(input)
     if results:
         result = results[0]
@@ -127,7 +127,7 @@ def main():
     for idx, x in enumerate(entities.items()):
         key, _ = x
         wikiclass = ""
-        summary = wiki(key)
+        summary = getWikiSummary(key)
         if summary == "Thing":
             wikiclass = summary
         else:
@@ -152,7 +152,7 @@ def main():
 
     for idx, key in enumerate(cutomentities):
         wikiclass = ""
-        summary = wiki(key)
+        summary = getWikiSummary(key)
         if summary == "Thing":
             wikiclass = summary
         else:
