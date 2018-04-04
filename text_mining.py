@@ -18,7 +18,7 @@ def customNER(tagged):
     entity = []
     ret = []
     for tagged_entry in tagged:
-        if(tagged_entry[1].startswith("NN") or (entity and tagged_entry[1].startswith("IN"))):
+        if(tagged_entry[1].startswith("JJ") or tagged_entry[1].startswith("NN") or (entity and tagged_entry[1].startswith("IN"))):
             entity.append(tagged_entry)
         else:
             if(entity) and entity[-1][1].startswith("IN"):
@@ -38,7 +38,8 @@ def wikiNER(tagged):
     for tagged_entry in tagged:
         if(tagged_entry[1].startswith("JJ") or tagged_entry[1].startswith("NN") or (entity and tagged_entry[1].startswith("IN")) or 
             (entity and tagged_entry[1].startswith("VB")) or (entity and tagged_entry[1].startswith("DT")) or (entity and tagged_entry[1].startswith("RB"))
-             or (entity and tagged_entry[1].startswith("TO")) or (entity and tagged_entry[1].startswith("CD"))  or (entity and tagged_entry[1].startswith("CC"))):
+             or (entity and tagged_entry[1].startswith("TO")) or (entity and tagged_entry[1].startswith("CD"))  or (entity and tagged_entry[1].startswith("CC"))
+             or (entity and tagged_entry[1].startswith("POS"))):
             entity.append(tagged_entry)
         else:
             if(entity) and entity[-1][1].startswith("IN"):
